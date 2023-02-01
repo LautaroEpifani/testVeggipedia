@@ -20,7 +20,6 @@ const FormProduct = () => {
       product.uploadReviews = []
       const result = await uploadFile(file);
       product.image = result;
-      product.reviews = []
       const db = getFirestore();
       const ordersCollection = collection(db, "products");
       addDoc(ordersCollection, product).then((res) => {
@@ -37,7 +36,7 @@ const FormProduct = () => {
   return (
     <div className="bg-primary pb-20">
       <NavGraphic />
-      <div className="bg-neutral-300 p-10 rounded-lg h-auto mx-4 sm:mx-28">
+      <div className="bg-white p-10 rounded-lg h-auto mx-4 sm:mx-28">
         <form
           onSubmit={handleSubmit}
           className="grid grid-cols-2 text-center gap-y-2  font-semibold uppercase items-center"
@@ -50,6 +49,15 @@ const FormProduct = () => {
             className="w-full sm:w-1/2 justify-self-center py-2 px-10  border border-pink-800 hover:bg-pink-200 rounded-lg uppercase  font-semibold"
             type="text"
             name="title"
+          />
+          <label className="" htmlFor="">
+            Brand
+          </label>
+          <input
+            onChange={handleChange}
+            className="w-full sm:w-1/2 justify-self-center py-2 px-10  border border-pink-800 hover:bg-pink-200 rounded-lg uppercase  font-semibold"
+            type="text"
+            name="brand"
           />
           <label htmlFor="">Price</label>
           <input

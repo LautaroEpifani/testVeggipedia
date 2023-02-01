@@ -3,6 +3,7 @@ import { Link, Navigate, useNavigate } from "react-router-dom";
 import { useAuth } from '../../context/authContext';
 import Alert from "./Alert";
 
+
 const Register = () => {
   const [user, setUser] = useState({
     email: "",
@@ -43,7 +44,7 @@ const Register = () => {
     <div className="bg-primary pt-20 h-screen">
     <div className="w-full max-w-lg m-auto px-2">
       {error && <Alert message={error} />}
-      <form
+      <form 
         onSubmit={handleSubmit}
         className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4"
         noValidate

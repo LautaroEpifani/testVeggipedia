@@ -10,7 +10,7 @@ const Hero = () => {
       <div className={`flex-1 ${styles.flexStart} flex-col xl:px-0 sm:px-16 px-6`}>
         
         <Navbar/>
-        <div className=" flex flex-row items-center py-[6px] px-4 bg-discount-gradient rounded-[10px] mb-6 mt-8 sm:mt-0">
+        <div className=" flex flex-row items-center py-[6px] px-4 bg-discount-gradient rounded-[10px] mb-6 mt-10">
           <img src={rightArrow} alt="discount" className="w-[32px] h-[32px]" />
           <p className={`${styles.paragraph} ml-2`}>
             <span className="text-yellow-600">All</span> <span className="text-blue-600">Information{" "}</span> 

@@ -7,7 +7,7 @@ const CardDeal = () => (
   <section className={layout.section} id="cardDeal">
     <div className={layout.sectionInfo}>
       <h2 className={styles.heading2}>
-        Upload products you know to our library.  <br className="sm:block hidden" /> You can get rewards.
+        Make reviews and become professional   <br className="sm:block hidden" /> of the vegan guide.
         
       </h2>
       <p className={`${styles.paragraph} max-w-[470px] mt-5`}>

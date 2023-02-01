@@ -3,7 +3,7 @@ import App from "../App";
 import Graphic from "../components/Graphic";
 import LayoutPublic from "../layout/LayoutPublic";
 import NotFound from "../components/NotFound";
-import ItemDetail from "../components/ItemDetail";
+import ValidateEmail from "../components/LoginComponents/ValidateEmail";
 import Login from "../components/LoginComponents/Login";
 import Register from "../components/LoginComponents/Register";
 import ItemDetailContainer from "../components/ItemDetailContainer";
@@ -43,8 +43,11 @@ export const router = createBrowserRouter([
       {  path:"/register", 
       element: <Register />},
       {  path:"/formproduct", 
-      element: <ProtectedUpload><FormProduct/></ProtectedUpload> }
-      
+      element: <ProtectedUpload><FormProduct/></ProtectedUpload> },
+      {   
+       path:"/validateEmail", 
+       element: <ValidateEmail/>
+      },
     ],
   },
 ]);

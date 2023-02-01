@@ -8,8 +8,10 @@ import {
   signInWithPopup,
   sendPasswordResetEmail,
   updateProfile,
+  sendEmailVerification,
 } from "firebase/auth";
 import { auth, app } from "../firebase/config";
+import { Navigate } from "react-router-dom";
 
 export const authContext = createContext();
 
@@ -23,20 +25,34 @@ export const useAuth = () => {
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState();
   const [loading, setLoading] = useState(true);
+  const [verified, setVerified] = useState(false)
+
+  
+ 
+    
+  
+  
 
   const signup = (email, password, userName) => {
+    
     createUserWithEmailAndPassword(auth, email, password).then(() => {
       updateProfile(auth.currentUser, {
         displayName: userName,
+        emailVerified: false,
       })
         .then(() => {
-          console.log("Actualizado");
-          window.location.reload();
+          sendEmailVerification(auth.currentUser)
+           .then(() => {
+               window.location.reload()
+           })
+          
+          console.log("User Updated")
         })
         .catch((error) => {
           console.log(error);
         });
     });
+
   };
 
   const login = (email, password) =>
@@ -56,10 +72,21 @@ export const AuthProvider = ({ children }) => {
   };
 
   const stateUser = () => {
+   
     if (user) {
+      user.reload()
       return user;
     }
+    
   };
+
+  const checkVerified = () => {
+
+    
+    console.log(user.emailVerified)
+    return user.emailVerified ? user.emailVerified : false
+    
+  }
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
@@ -71,7 +98,10 @@ export const AuthProvider = ({ children }) => {
     return () => unsubscribe();
   }, []);
 
+  
+
   return (
+   
     <authContext.Provider
       value={{
         signup,
@@ -82,6 +112,7 @@ export const AuthProvider = ({ children }) => {
         loginWithGoogle,
         resetPassword,
         stateUser,
+        checkVerified,
       }}
     >
       {children}

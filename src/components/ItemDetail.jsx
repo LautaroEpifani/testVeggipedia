@@ -27,15 +27,16 @@ const ItemDetail = ({ dataItem }) => {
     userName: "",
   });
   const [reviewCompleted, setReviewCompleted] = useState([]);
-
   const [textAr, setTextAr] = useState(false);
   const [openReviews, setOpenReviews] = useState(false);
+
+  const [ingredients, setIngredients] = useState("")
+  const [nutritional, setNutritional] = useState("")
+  const [additional, setAdditional] = useState("")
 
   const handleChange = ({ target: { name, value } }) => {
     setReviews({ ...reviews, [name]: value });
   };
-
- 
 
   const uploadReview = (e) => {
     e.preventDefault();
@@ -56,8 +57,12 @@ const ItemDetail = ({ dataItem }) => {
     const querydb = getFirestore();
     const queryCollection = doc(querydb, `/products/${detailId}`);
     getDoc(queryCollection).then((res) => {
-      if (res.data().uploadReviews) {
+      if (res.data()) {
         setReviewCompleted(res.data().uploadReviews);
+        setIngredients(res.data().ingredients)
+        setNutritional(res.data().nutritional)
+        setAdditional(res.data().additional)
+        
       } else {
         setReviewCompleted([]);
       }
@@ -67,11 +72,11 @@ const ItemDetail = ({ dataItem }) => {
   const openTextArea = () => {
     setTextAr(true);
   };
-
+  
   return (
-    <div className="bg-primary pb-20 ">
+    <div className="bg-primary pb-20 h-auto">
       <NavGraphic />
-      <div className="block md:flex md:p-0 p-10">
+      <div className="block md:flex p-10 items-start md:pl-32">
         <div className="block md:flex w-full lg:w-1/2 justify-center gap-20  py-10 bg-white text-center mx-auto rounded-lg">
           <div className="w-1/2 md:w-1/3 text-center mx-auto">
             <img
@@ -82,9 +87,15 @@ const ItemDetail = ({ dataItem }) => {
           </div>
           <div className="w-10/12 text-center mx-auto lg:text-left">
             <StarItems completedReview={reviewCompleted} />
-            <h1 className="font md:text-4xl text-pink-600 mb-4 font-bold md:font-semibold">
+            <div className="flex justify-center lg:justify-start gap-2 items-center px-2">
+            <h1 className="font md:text-4xl text-pink-600  font-bold md:font-semibold">
               {dataItem.title}
             </h1>
+              <p className="font md:text-4xl text-pink-600  font-bold md:font-semibold">-</p>
+             <h1 className="font md:text-4xl text-pink-600  font-bold md:font-semibold">
+              {dataItem.brand}
+            </h1>
+            </div>
 
             <div >
               {textAr ? (
@@ -127,9 +138,9 @@ const ItemDetail = ({ dataItem }) => {
             </div>
           </div>
         </div>
-        <ProductInfo />
+        <ProductInfo ingredients={ingredients} nutritional={nutritional} additional={additional}/>
       </div>
-      <div className="w-1/2 lg:w-1/4 border bg-white border-pink-600 rounded-lg p-2 gap-10 text-center mx-auto items-center mt-4 lg:mt-20">
+      <div className="w-1/2 lg:w-1/4 border bg-white border-pink-600 rounded-lg p-2 gap-10 text-center mx-auto items-center mt-64 lg:mt-28">
         <button
           className=" text-pink-700"
           onClick={() => setOpenReviews(!openReviews)}
