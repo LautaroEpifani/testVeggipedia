@@ -3,7 +3,7 @@ import styles, { layout } from "../styles";
 import Button from "./Button";
 
 const FeatureCard = ({ icon, title, content, index }) => (
-  <div className={`flex flex-row p-6 rounded-[20px] ${index !== features.length - 1 ? "mb-6" : "mb-0"} feature-card w-full`}>
+  <div className={`flex flex-row p-6 rounded-[20px] ${index !== features.length - 1 ? "mb-6" : "mb-0"} feature-card w-full xl:pl-20`}>
     <div className={`w-[64px] h-[64px] rounded-full ${styles.flexCenter} bg-pink-700`}>
       <img src={icon} alt="star" className="w-[50%] h-[50%] object-contain" />
     </div>
@@ -19,7 +19,7 @@ const FeatureCard = ({ icon, title, content, index }) => (
 );
 
 const Business = () =>  (
-  <section id="features" className={layout.section}>
+  <section id="features" className={`${layout.section} xl:pl-10`}>
     <div className={layout.sectionInfo}>
       <h2 className={styles.heading2}>
         All the vegan product information you need,<br className="sm:block hidden" /> find it here.

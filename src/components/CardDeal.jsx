@@ -4,7 +4,7 @@ import {library} from "../assets/img"
 import Button from "./Button";
 
 const CardDeal = () => (
-  <section className={layout.section} id="cardDeal">
+  <section className={`${layout.section} xl:pl-20`} id="cardDeal">
     <div className={layout.sectionInfo}>
       <h2 className={styles.heading2}>
         Make reviews and become professional   <br className="sm:block hidden" /> of the vegan guide.

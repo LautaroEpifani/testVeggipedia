@@ -43,10 +43,11 @@ export const AuthProvider = ({ children }) => {
         .then(() => {
           sendEmailVerification(auth.currentUser)
            .then(() => {
-               window.location.reload()
+            
+              window.location.reload()
            })
           
-          console.log("User Updated")
+          // console.log("User Updated")
         })
         .catch((error) => {
           console.log(error);

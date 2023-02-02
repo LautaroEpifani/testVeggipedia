@@ -12,10 +12,10 @@ import {
 
 function App() {
   return (
-    <div className="bg-primary w-full overflow-hidden">
+    <div className="bg-primary w-full overflow-hidden ">
 
 
-    <div className={`bg-primary ${styles.flexStart}`}>
+    <div className={`bg-primary ${styles.flexStart} xl:pl-20`}>
       <div className={`${styles.boxWidth}`}>
         <Hero />
       </div>
