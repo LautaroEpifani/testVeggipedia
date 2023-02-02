@@ -8,7 +8,7 @@ import { v4 }  from "uuid";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyDuuY5Xen4uKjT95B8D3OiK2kOeZzeVZE8", 
+  apiKey: `${import.meta.env.VITE_SOME_KEY}`,
   authDomain: "testveggipedia.firebaseapp.com",
   projectId: "testveggipedia",
   storageBucket: "testveggipedia.appspot.com",
